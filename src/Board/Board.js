@@ -1,15 +1,21 @@
 import React from 'react';
-import {Cell} from "./Cell";
+import {Cell} from "../Cell/Cell";
+import {container} from './Board.module.css';
 
-export const Board = ({cellClicked}) => {
+export const Board = ({
+                        cellClicked,
+                        board,
+                        disabled
+                      }) => {
   return (
-    <div>
+    <div className={container}>
       {
-        new Array(9)
-          .fill(undefined)
-          .map((_, index) => (
+        board
+          .map((value, index) => (
             <Cell
+              disabled={disabled}
               key={index}
+              value={value}
               cellClicked={() => {
                 cellClicked(index)
               }}

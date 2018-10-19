@@ -2,6 +2,7 @@ import React from 'react';
 import {configure, shallow} from 'enzyme';
 import {Cell} from "./Cell";
 import Adapter from "enzyme-adapter-react-16/build";
+import {O, X} from "../Utils/Constants";
 
 describe('Cell', () => {
 
@@ -12,11 +13,20 @@ describe('Cell', () => {
   });
 
   it('should call cellClicked when clicked', () => {
-    configure({adapter: new Adapter()});
     const cellClicked = jest.fn();
-    let cell = shallow(<Cell cellClicked={cellClicked}/>);
+    const cell = shallow(<Cell cellClicked={cellClicked}/>);
     cell.find("button").simulate("click");
     expect(cellClicked).toHaveBeenCalled();
+  });
+
+  it('should display X user cell if value is X', () => {
+    const cell = shallow(<Cell value={X}/>);
+    expect(cell.text()).toEqual("X");
+  });
+
+  it('should display O user cell if value is O', () => {
+    const cell = shallow(<Cell value={O}/>);
+    expect(cell.text()).toEqual("O");
   });
 
 });
