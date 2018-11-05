@@ -5,12 +5,16 @@ import {Cell} from "../Cell/Cell";
 
 describe('Board', () => {
 
-  it('render the amount of cells that is put in the board', () => {
+  it('should create board', () => {
+    expect(Board).toBeTruthy();
+  });
+
+  it('should render the amount of cells that is put in the board', () => {
     const board = shallow(<Board board={[undefined, undefined, undefined]}/>);
     expect(board.find(Cell).length).toEqual(3);
   });
 
-  it('should transfer events from cell up', () => {
+  it('Should report the index of the clicked cell', () => {
     const cellClicked = jest.fn();
     const board = shallow(
       <Board

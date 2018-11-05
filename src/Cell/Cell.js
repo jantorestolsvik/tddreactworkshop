@@ -1,5 +1,5 @@
 import React from 'react';
-import {O, X} from "../Utils/Constants";
+import {player2, player1} from "../Utils/Constants";
 import {cell} from './Cell.module.css';
 
 export const Cell = ({
@@ -12,7 +12,7 @@ export const Cell = ({
     className={cell}
     onClick={cellClicked}
   >
-    {value === X && "X"}
-    {value === O && "O"}
+    {value === player1 && "X"}
+    {value === player2 && "O"}
   </button>
 );

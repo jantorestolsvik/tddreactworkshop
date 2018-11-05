@@ -2,17 +2,21 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {Game} from "./Game";
 import {Board} from "../Board/Board";
-import {O, X} from "../Utils/Constants";
+import {player2, player1} from "../Utils/Constants";
 import {Header} from "../Header/Header";
 
 describe('Game', () => {
 
+  it('Should create game', () => {
+    expect(Game).toBeTruthy();
+  });
+
   it('should change player every time a cell is clicked', () => {
     const game = shallow(<Game/>);
     const board = game.find(Board);
-    expect(game.state().player).toEqual(X);
+    expect(game.state().player).toEqual(player1);
     board.props().cellClicked(0);
-    expect(game.state().player).toEqual(O);
+    expect(game.state().player).toEqual(player2);
   });
 
   it('should occupy a cell for the given player when a cell is clicked', () => {
@@ -20,7 +24,7 @@ describe('Game', () => {
     const board = game.find(Board);
     expect(game.state().board[0]).toEqual(undefined);
     board.props().cellClicked(0);
-    expect(game.state().board[0]).toEqual(X);
+    expect(game.state().board[0]).toEqual(player1);
   });
 
   it('should not do anything if cell clicked is already occupied', () => {
@@ -41,7 +45,7 @@ describe('Game', () => {
     expect(isBoardFull).toHaveBeenCalled();
     expect(header.props().winner).toEqual("getWinnerResponse");
     expect(header.props().fullBoard).toEqual("isBoardFullResponse");
-    expect(header.props().player).toEqual("X");
+    expect(header.props().player).toEqual("player1");
   });
 
   it('should disable board if there is a winner', () => {

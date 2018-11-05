@@ -1,6 +1,6 @@
 import React from 'react';
 import {Board} from "../Board/Board";
-import {O, X} from "../Utils/Constants";
+import {player2, player1} from "../Utils/Constants";
 import {Header} from "../Header/Header";
 import {getWinner as getWinnerDefault, isBoardFull as isBoardFullDefault} from "../Utils/BoardUtils";
 
@@ -9,7 +9,7 @@ export class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      player: X,
+      player: player1,
       board: new Array(9).fill(undefined)
     };
   }
@@ -55,7 +55,7 @@ export class Game extends React.Component {
                     }
                     return cellValue;
                   }),
-                player: oldState.player === X ? O : X
+                player: oldState.player === player1 ? player2 : player1
               };
             })
           }}

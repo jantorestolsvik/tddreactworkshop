@@ -6,11 +6,11 @@ export const Header = ({
                          player
                        }) => {
   if (winner) {
-    return <h1>player {winner} won!</h1>;
+    return <h1>{winner} won!</h1>;
   } else if (fullBoard) {
     return <h1>It is a tie!</h1>;
   } else {
-    return <h1>player {player}s turn</h1>;
+    return <h1>{player}s turn</h1>;
   }
 
 };
